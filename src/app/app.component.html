@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="game-board">
 		<div class="row" *ngFor="let item of ArrayClassType(15);let i=index">
-			<div class="each-cell" *ngFor="let item of ArrayClassType(15);let j=index" [ngClass]="{'playable-cell':!(i<6 && j<6 || i<6 && j>8 || i>8 && j<6 || i>8 && j>8) && !(i>5 && i<9 && j>5 && j<9), 'left-border':!(i<6 && j<6 || i<6 && j>8 || i>8 && j<6 || i>8 && j>8) && !(i>5 && i<9 && j>5 && j<9) && (j==6 || j==0 || j==9), 'right-border':!(i<6 && j<6 || i<6 && j>8 || i>8 && j<6 || i>8 && j>8) && !(i>5 && i<9 && j>5 && j<9) && (j==8 || j==5 || j==14), 'top-border':!(i<6 && j<6 || i<6 && j>8 || i>8 && j<6 || i>8 && j>8) && !(i>5 && i<9 && j>5 && j<9) && (i==6 || i==0 || i==9)}">
+			<div class="each-cell" *ngFor="let item of ArrayClassType(15);let j=index" [ngClass]="{'playable-cell':!(i<6 && j<6 || i<6 && j>8 || i>8 && j<6 || i>8 && j>8) && !(i>5 && i<9 && j>5 && j<9), 'left-border':!(i<6 && j<6 || i<6 && j>8 || i>8 && j<6 || i>8 && j>8) && !(i>5 && i<9 && j>5 && j<9) && (j==6 || j==6 || j==9), 'right-border':!(i<6 && j<6 || i<6 && j>8 || i>8 && j<6 || i>8 && j>8) && !(i>5 && i<9 && j>5 && j<9) && (j==5 || j==8 || j==14), 'top-border':!(i<6 && j<6 || i<6 && j>8 || i>8 && j<6 || i>8 && j>8) && !(i>5 && i<9 && j>5 && j<9) && (i==0 || i==6 || i==9), 'bottom-border':!(i<6 && j<6 || i<6 && j>8 || i>8 && j<6 || i>8 && j>8) && !(i>5 && i<9 && j>5 && j<9) && (i==5 || i==8 || i==14)}">
 			</div>
 		</div>
 	</div>
