@@ -1,3 +1,21 @@
-p {
-  font-family: Lato;
+div.each-cell {
+  width: 20px;
+  height: 20px;
+}
+div.playable-cell {
+  outline: 0px solid grey ;
+}
+/* div.playable-cell::after {
+  content: '';
+  width: 20px;
+  height: 20px;
+  outline: 1px solid grey ;
+} */
+div.game-board {
+  height: fit-content;
+}
+div.row {
+  display: grid;
+  grid-auto-flow: column;
+  width: fit-content;
 }
