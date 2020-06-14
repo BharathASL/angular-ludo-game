@@ -1,11 +1,76 @@
-$star-url: url("./star.svg");
+$star-url: url("./assets/star.svg");
+$sqrt-root-of-two: 1.4142135623730951;
+$red: #ef1b27;
+$green: #03a14a;
+$yellow: #ffdf1a;
+$blue: #57a9e8;
+$border-color: rgb(100, 100, 100);
 table.game-board {
-  background-image: $star-url;
   border-collapse: collapse;
-  $each-cell-min-size: 20px;
+  $each-cell-min-size: 30px;
   td {
-    width: $each-cell-min-size;
-    height: $each-cell-min-size; 
-    border: 1px solid grey;
+    min-width: $each-cell-min-size;
+    height: $each-cell-min-size;
+    $border-size: $each-cell-min-size/14;
+    border: $border-size solid rgb(100, 100, 100);
+    background: white;
+    &.red-spot, > *.red-spot {
+      background: $red;
+    }
+    &.green-spot, > *.green-spot {
+      background: $green;
+    }
+    &.yellow-spot, > *.yellow-spot {
+      background: $yellow;
+    }
+    &.blue-spot, > *.blue-spot {
+      background: $blue;
+    }
+    &.star-spot {
+      background-image: $star-url;
+    }
+    &.goal-spot {
+      background: transparent;
+    }
+    // &.goal-spot::before {
+    //   content: "";
+    //   display: block;
+    //   position: relative;
+    //   background: red;
+    //   $diagonal: $each-cell-min-size * 3 + $border-size * 4 - $border-size * $sqrt-root-of-two;
+    //   left: -1px - $diagonal / (2 * $sqrt-root-of-two);
+    //   $box-size: $diagonal / $sqrt-root-of-two;
+    //   border: $border-size solid rgb(100, 100, 100);
+    //   width: $box-size + $border-size / $sqrt-root-of-two * 2;
+    //   height: $box-size + $border-size / $sqrt-root-of-two * 2;
+    //   // z-index: -1;
+    //   transform: rotate(45deg);
+    // }
+    &.goal-spot::before {
+      content: "";
+      display: block;
+      position: relative;
+      background: $red;
+      $required-size: $each-cell-min-size * 3 + $border-size * 4 - $border-size * $sqrt-root-of-two;
+      /*Required size decription
+      3 number of cells in column-wise * each cell size + 4 borders * border size * disagonal size of our border for avoiding extra border in target triangle
+      */
+      left: -1px - ($required-size + $border-size * 2) / (2 * $sqrt-root-of-two);
+      /*left value description
+      -1px : making object center because padding 1px is exists
+      ($required-size + $border-size * 2) / (2 * $sqrt-root-of-two) : finding half diagonal value of our object
+      */
+      $object-size: $required-size / $sqrt-root-of-two + $border-size;
+      width: $object-size;
+      height: $object-size;
+      z-index: -1;
+      transform: rotate(45deg);
+      $box-shadow-movement-factor: $object-size + $border-size;
+      box-shadow: 
+      0 (-$box-shadow-movement-factor) 0 0 $green, 
+      $box-shadow-movement-factor (-$box-shadow-movement-factor) 0 0 $yellow, 
+      $box-shadow-movement-factor 0 0 0 $blue, 
+      $box-shadow-movement-factor / 2 (-$box-shadow-movement-factor / 2) 0 38px $border-color;
+    }
   }
 }

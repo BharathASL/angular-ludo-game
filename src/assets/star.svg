@@ -10,7 +10,7 @@
 	.st1 {
 		fill: none;
 		stroke: grey;
-		stroke-width: 1.1;
+		stroke-width: 3;
 		stroke-linecap: round;
 		stroke-linejoin: round;
 		stroke-miterlimit: 10;
