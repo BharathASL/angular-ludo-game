@@ -1,0 +1,11 @@
+$star-url: url("./star.svg");
+table.game-board {
+  background-image: $star-url;
+  border-collapse: collapse;
+  $each-cell-min-size: 20px;
+  td {
+    width: $each-cell-min-size;
+    height: $each-cell-min-size; 
+    border: 1px solid grey;
+  }
+}
