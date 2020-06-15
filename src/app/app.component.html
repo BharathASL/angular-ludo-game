@@ -1,10 +1,10 @@
 <table class="game-board">
 	<tr>
-		<td colspan="6" rowspan="6"></td>
+		<td colspan="6" rowspan="6">{{getFreeTokens(0)}}</td>
 		<td></td>
 		<td></td>
 		<td></td>
-		<td colspan="9" rowspan="6"></td>
+		<td colspan="9" rowspan="6">{{getFreeTokens(1)}}</td>
 	</tr>
 	<tr>
 		<td></td>
@@ -33,13 +33,13 @@
 	</tr>
 	<tr>
 		<td></td>
-		<td class="red-spot"></td>
+		<td class="red-spot">{{getLocationInfo(0)}}</td>
 		<td></td>
 		<td></td>
 		<td></td>
 		<td></td>
 		<td colspan="3" rowspan="3" class="goal-spot">
-    </td>
+		</td>
 		<td></td>
 		<td></td>
 		<td></td>
@@ -76,11 +76,11 @@
 		<td></td>
 	</tr>
 	<tr>
-		<td colspan="6" rowspan="6"></td>
+		<td colspan="6" rowspan="6">{{getFreeTokens(3)}}</td>
 		<td></td>
 		<td class="blue-spot"></td>
 		<td></td>
-		<td colspan="9" rowspan="6"></td>
+		<td colspan="9" rowspan="6">{{getFreeTokens(2)}}</td>
 	</tr>
 	<tr>
 		<td></td>
@@ -108,3 +108,10 @@
 		<td></td>
 	</tr>
 </table>
+<div>
+  Player : {{getTokenIndexToSymbol(playerRoleNow)}}
+  <br>
+  Steps : {{lastSep}}
+  <br>
+  <button (click)="dice()">Dice</button>
+</div>
