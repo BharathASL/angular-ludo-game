@@ -1,4 +1,4 @@
-import { Component, VERSION } from "@angular/core";
+import { Component } from "@angular/core";
 
 @Component({
   selector: "my-app",
@@ -11,14 +11,12 @@ export class AppComponent {
   playerRoleNow: number;
   lastSep: number;
   constructor() {
-    const temp = Array(4).fill(
-      AppComponent.makeCopy({ location: null, red_carpet: null })
-    );
-    temp.map((e, i) => {
-      e["indexAt"] = i;
-      return e;
-    });
-    // this.board = Array(4).fill(AppComponent.makeCopy(temp)); //[red, green, blue, yellow] players by index
+    const temp = [
+      { location: null, red_carpet: null, indexAt: 0 },
+      { location: null, red_carpet: null, indexAt: 1 },
+      { location: null, red_carpet: null, indexAt: 2 },
+      { location: null, red_carpet: null, indexAt: 3 }
+    ];
     this.board = [
       AppComponent.makeCopy(temp),
       AppComponent.makeCopy(temp),
@@ -41,8 +39,8 @@ export class AppComponent {
 
   getFreeTokens(tokenIndex: number): string {
     return (this.board[tokenIndex] as Array<Object>)
-      .filter(e => !e["location"])
-      .map((e, i) => this.getTokenIndexToSymbol(tokenIndex) + i)
+      .filter(e => e["location"] == null)
+      .map((e, i) => this.getTokenIndexToSymbol(tokenIndex) +  + e["indexAt"])
       .join(" ");
   }
 
