@@ -1,43 +1,43 @@
-<table class="game-board">
+<table class="game-board" (click)="boardClicked()">
 	<tr>
 		<td colspan="6" rowspan="6">{{getFreeTokens(0)}}</td>
-		<td></td>
-		<td></td>
-		<td></td>
+		<td>{{getLocationInfo(10)}}</td>
+		<td>{{getLocationInfo(11)}}</td>
+		<td>{{getLocationInfo(12)}}</td>
 		<td colspan="9" rowspan="6">{{getFreeTokens(1)}}</td>
 	</tr>
 	<tr>
-		<td></td>
+		<td>{{getLocationInfo(9)}}</td>
 		<td class="green-spot"></td>
 		<td class="green-spot"></td>
 	</tr>
 	<tr>
-		<td class="star-spot"></td>
+		<td class="star-spot">{{getLocationInfo(8)}}</td>
 		<td class="green-spot"></td>
 		<td></td>
 	</tr>
 	<tr>
-		<td></td>
+		<td>{{getLocationInfo(7)}}</td>
 		<td class="green-spot"></td>
 		<td></td>
 	</tr>
 	<tr>
-		<td></td>
+		<td>{{getLocationInfo(6)}}</td>
 		<td class="green-spot"></td>
 		<td></td>
 	</tr>
 	<tr>
-		<td></td>
+		<td>{{getLocationInfo(5)}}</td>
 		<td class="green-spot"></td>
 		<td></td>
 	</tr>
 	<tr>
 		<td></td>
 		<td class="red-spot">{{getLocationInfo(0)}}</td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
+		<td>{{getLocationInfo(1)}}</td>
+		<td>{{getLocationInfo(2)}}</td>
+		<td>{{getLocationInfo(3)}}</td>
+		<td>{{getLocationInfo(4)}}</td>
 		<td colspan="3" rowspan="3" class="goal-spot">
 		</td>
 		<td></td>

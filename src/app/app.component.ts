@@ -29,27 +29,37 @@ export class AppComponent {
 
   dice() {
     this.lastSep = AppComponent.randomNumber(1, 6);
-    if (this.lastSep == 6) {
-      const targetPlayer = this.board[this.playerRoleNow];
-      targetPlayer[0]["location"] = 0;
+    const targetPlayer = this.board[this.playerRoleNow];
+    if (this.lastSep != 6) {
+      targetPlayer[0]["location"] += this.lastSep;
+      this.playerRoleNow = ++this.playerRoleNow % 4;
+    }
+    var freeTokens = targetPlayer.filter(e => e["location"] == null);
+    if (freeTokens.length == 0) {
+      targetPlayer[0]["location"] += this.lastSep;
       return;
     }
-    this.playerRoleNow = ++this.playerRoleNow % 4;
+    freeTokens[0]["location"] = 0;
+    return;
+  }
+
+  boardClicked() {
+    console.log(event);
   }
 
   getFreeTokens(tokenIndex: number): string {
     return (this.board[tokenIndex] as Array<Object>)
       .filter(e => e["location"] == null)
-      .map((e, i) => this.getTokenIndexToSymbol(tokenIndex) +  + e["indexAt"])
+      .map((e, i) => this.getTokenIndexToSymbol(tokenIndex) + +e["indexAt"])
       .join(" ");
   }
 
   getLocationInfo(locationIndex: number): string {
     return this.board
-      .map(e =>
+      .map((e, i) =>
         e
           .filter(e => e["location"] == locationIndex)
-          .map(e => this.getTokenIndexToSymbol(locationIndex) + e["indexAt"])
+          .map(e => this.getTokenIndexToSymbol(i) + e["indexAt"])
       )
       .filter(e => e.length != 0)
       .join(" ");
@@ -65,8 +75,10 @@ export class AppComponent {
 
   static randomNumber(from: number, to: number) {
     /*Debugging code */
+    if (from == 0 && to == 3) {
+      return 0;
+    }
     if (from == 1 && to == 6) {
-      // debugger;
       return 6;
     }
     /*Debugging code */
